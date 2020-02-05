@@ -85,82 +85,82 @@ Topics:
 
 1. What's a namespace:
 
-  1namespace.yml
+    1namespace.yml
   
-  Review yaml file
+    Review yaml file
   
-  Deploy Namespace
+    Deploy Namespace
   
-  pod2.yml
+    pod2.yml
   
-  Deploy a pod into a Namespace
+    Deploy a pod into a Namespace
   
 
 1. What's a deployment
 
-  deployment1.yml
+    deployment1.yml
   
-  Review yaml file
+    Review yaml file
   
-  Deploy deployment
+    Deploy deployment
   
-  Describe deployment view
+    Describe deployment view
   
-  Delete pod
+    Delete pod
 
-  Rolling updates
+    Rolling updates
   
-    Show nginx version
+        Show nginx version
     
-    deployment2.yml
+        deployment2.yml
     
-    Show nginx version  
+        Show nginx version  
     
-    See rolling update
+        See rolling update
       
-    k rollout undo deployment my-first-deployment #roll outs
+        `k rollout undo deployment my-first-deployment #roll outs`
 
 
 
 1. Debuggin our pods
 
-  deployment3.yml
+    deployment3.yml
   
-  Debugging failing pods
+    Debugging failing pods
 
 
 1. Readiness y liveliness tests
 
-  deployment4.yml
+    deployment4.yml
   
-  How Readiness and liveliness tests works
+    How Readiness and liveliness tests works
 
-  deployment5.yml //failing deployment
+    deployment5.yml //failing deployment
 
-  deployment4.yml //back to healthy all good.
+    deployment4.yml //back to healthy all good.
   
 
 1. Types of services
 
-   service1.yml
+    service1.yml
    
-   Review yaml file
+    Review yaml file
    
-   How Services Works
+    How Services Works
    
-   Types of Services:
+    Types of Services:
    
-    NodePort
+        NodePort
     
-    IpCluster
+        IpCluster
     
-    LoadBalancer
+        LoadBalancer
 
-  service2.yml
+    service2.yml
 
-k port-forward web-app-6557d94cdc-rl7cp 9090:9090
+    k port-forward web-app-6557d94cdc-rl7cp 9090:9090
 
-minikube service web-app-service -n training --url
-to obtain the exposed url
+    minikube service web-app-service -n training --url
+    to obtain the exposed url
 
 
