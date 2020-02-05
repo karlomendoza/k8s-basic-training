@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-app-service
+  namespace: training
+  labels:
+    service: web-app-service
+spec:
+  type: NodePort #IpCluster, LoadBalancer if on cloud
+  ports:
+  - port: 9090
+    targetPort: 9090
+    protocol: TCP
+  selector:
+    app: web-app-backend

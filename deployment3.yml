@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-app
+  namespace: training
+  labels:
+    app: web-app
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: web-app-backend
+  template:
+    metadata:
+      labels:
+        app: web-app-backend
+    spec:
+      containers:
+      - name: web-app
+        image: karlomendozaarmory/k8s-training:3
+        ports:
+        - containerPort: 9090

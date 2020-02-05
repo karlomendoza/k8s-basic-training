@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-app
+  namespace: training
+  labels:
+    app: web-app
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: web-app-backend
+  template:
+    metadata:
+      labels:
+        app: web-app-backend
+    spec:
+      containers:
+      - name: web-app
+        image: karlomendozaarmory/k8s-training:4
+        ports:
+        - containerPort: 9090
+        command:
+        - /bin/sh
+        - -c
+        - touch /tmp/healthy; sleep 30; rm -rf /tmp/healthy; sleep 600
+        livenessProbe:
+          exec:
+            command:
+            - cat
+            - /tmp/healthy
+          initialDelaySeconds: 5
+          periodSeconds: 5

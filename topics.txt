@@ -1,0 +1,112 @@
+Install Kubectl
+
+```
+brew install kubectl
+```
+
+Verify 
+
+```
+kubectl --version
+```
+
+install minikube
+
+```
+brew install minikube
+or
+brew upgrade minikube //if already installed
+```
+
+```
+install virtualbox
+
+minikube start --vm-driver=virtualbox
+
+Verify:
+kubectl get ns
+returns:
+
+```
+NAME                   STATUS   AGE
+default                Active   79s
+kube-node-lease        Active   82s
+kube-public            Active   82s
+kube-system            Active   82s
+kubernetes-dashboard   Active   68s
+```
+
+run on the provided folder:
+kubectl apply -f . 
+
+wait for some pods to run then
+kubectl get pods -n training
+kubectl delete namespace training
+
+Topics:
+
+How K8s works
+  Master - node
+  Master review
+  Nodes review
+
+What's a pod
+  yaml file review
+  Deploy pod
+  Describe, Logs, Exec
+  Delete pod
+
+    pod1.yml
+
+
+1namespace.yml
+
+    pod2.yml
+
+What's a deployment
+  yaml file review
+  deploy deployment
+  Describe
+  delete pod
+
+    deployment1.yml
+
+    show nginx version
+
+    deployment2.yml
+  See rolling update
+    how it works
+
+
+  show nginx version
+  
+  k rollout undo deployment my-first-deployment #roll outs
+
+  after rollout show version
+
+
+Debuggin our pods
+
+  deployment3.yml #this fails why? debug it
+  checking it out
+
+
+Rediness y liveliness tests
+  deployment4.yml it works, how can we access it?
+
+deployment5.yml //failing deployment
+
+deployment4.yml //back to healthy all good.
+
+Types of services
+  service1.yml #this is not useful, why?
+
+  service2.yml
+
+
+k port-forward web-app-6557d94cdc-rl7cp 9090:9090
+
+minikube service web-app-service -n training --url
+to obtain the exposed url
+
+
