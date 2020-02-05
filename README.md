@@ -1,12 +1,13 @@
-Prerequisites:
+## Prerequisites:
 
-#Install Kubectl
-#Install Minikube
-#Install Virtualbox
+### Install Kubectl
+
+### Install Minikube
+### Install Virtualbox
 
 
 
-Install Kubectl
+#### Install Kubectl
 
 ```
 brew install kubectl
@@ -18,7 +19,7 @@ Verify
 kubectl --version
 ```
 
-install minikube
+#### install minikube
 
 ```
 brew install minikube
@@ -26,16 +27,19 @@ or
 brew upgrade minikube //if already installed
 ```
 
-```
-install virtualbox
 
+####  install virtualbox
+
+```
 minikube start --vm-driver=virtualbox
+```
 
 Verify:
+
+```
 kubectl get ns
 returns:
 
-```
 NAME                   STATUS   AGE
 default                Active   79s
 kube-node-lease        Active   82s
@@ -45,16 +49,22 @@ kubernetes-dashboard   Active   68s
 ```
 
 run on the provided folder:
-kubectl apply -f . 
 
-wait for some pods to run then
+```
+kubectl apply -f . 
 kubectl get pods -n training
+```
+
+Wait for some pods to run then:
+
+```
 kubectl delete namespace training
+```
 
 Prerequisites end.
 
 
-Training topics
+# Training topics
 
 Topics:
 
