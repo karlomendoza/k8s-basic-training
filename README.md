@@ -4,7 +4,7 @@
 
 ### Install Minikube
 ### Install Virtualbox
-
+###Download this repository
 
 
 #### Install Kubectl
@@ -45,23 +45,23 @@ default                Active   79s
 kube-node-lease        Active   82s
 kube-public            Active   82s
 kube-system            Active   82s
-kubernetes-dashboard   Active   68s
 ```
 
-run on the provided folder:
-
-```
+###Download this repository
+run on this repository folder:
 kubectl apply -f . 
+
 kubectl get pods -n training
+wait for most of your pods to be shown as running (depends on your internet speed)
+Note that not all of them will be in Running status, this is intentional.
+
+```
+k get pods
+NAME                                READY   STATUS             RESTARTS   AGE
+nginx-v000                          1/1     Running            0          14d
 ```
 
-Wait for some pods to run then:
-
-```
-kubectl delete namespace training
-```
-
-Prerequisites end.
+Then, clean up
 
 
 # Training topics
@@ -162,5 +162,4 @@ Topics:
 
     minikube service web-app-service -n training --url
     to obtain the exposed url
-
 
