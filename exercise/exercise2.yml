@@ -1,0 +1,83 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: exercise2
+
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-first-pod2
+  namespace: exercise2
+spec:
+ containers:
+   - name: my-first-container
+     image: nginx_ZZZZZZZ
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment
+  namespace: exercise2
+  labels:
+    app: web-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: web-app-backend
+  template:
+    metadata:
+      labels:
+        app: web-app-backend
+    spec:
+      containers:
+      - name: web-app
+        image: busybox
+        ports:
+        - containerPort: 9090
+        command:
+        - /bin/sh
+        - -c
+        - touch /tmp/healthy; sleep 4; rm -rf /tmp/healthy;
+        livenessProbe:
+          exec:
+            command:
+            - cat
+            - /tmp/healthy
+          initialDelaySeconds: 2
+          periodSeconds: 1
+          failureThreshold: 1
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment2
+  namespace: exercise2
+  labels:
+    app: web-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: web-app-backend
+  template:
+    metadata:
+      labels:
+        app: web-app-backend
+    spec:
+      nodeSelector:
+        funciona: "no"
+      containers:
+      - name: web-app
+        image: busybox
+        ports:
+        - containerPort: 9090
+        command:
+        - /bin/sh
+        - -c
+        - touch /tmp/healthy; sleep 20; rm -rf /tmp/healthy; sleep 600

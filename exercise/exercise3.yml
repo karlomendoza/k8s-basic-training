@@ -1,0 +1,61 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: exercise3
+---
+
+##this application has an endpoint on localhost:9090/hello
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-app
+  namespace: exercise3
+  labels:
+    app: web-app
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: web-app-backend66
+  template:
+    metadata:
+      labels:
+        app: web-app-backend
+    spec:
+      containers:
+      - name: web-app
+        image: karlomendozaarmory/k8s-training:6
+        ports:
+        - containerPort: 8080
+
+--- 
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: myservice
+  namespace: exercise3
+  labels:
+    service: web-app-service
+spec:
+  type: NodePort
+  ports:
+  - port: 9090
+    targetPort: 9090
+    protocol: TCP
+  selector:
+    app: web-app-backend
+
+--- 
+## this application calls an endpoint trying to get a greeting
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: app
+  name: rest-consumer
+spec:
+  containers:
+  - image: karlomendozaarmory/rest-consumer:1
+    name: rest-consumer
