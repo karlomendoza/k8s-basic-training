@@ -1,0 +1,233 @@
+Part 2:
+
+Getting info of pods
+ConfigMaps
+Secrets
+Volumes
+Persistent Volumes
+Persistent Volumes Claims
+Taints and tolerations
+Node Selectors
+Multicontainers
+Work session, debug the applications
+
+
+Getting info of objects
+kubectl config set-context --current --namespace <namespace> //sets namespace as default namespace (only for you)
+
+kubectl get all
+kubectl get <kind>
+kubectl get pods --all-namespaces
+kubectl get all --all-namespaces
+kubectl get <kind> <name> -o yaml //gets you the yaml of said object
+kubectl get <kind> -o wide //gets extra info
+
+kubectl describe <kind>
+kubectl describe <kind> <name>
+
+kubectl edit <kind> <name> //edit on your console the object and push to k8s
+
+kubectl apply -f <file name>
+
+kubectl delete <kind> <name>
+kubectl delete <kind> --all //deletes them all
+
+kubectl get svc //services
+kubectl get pods
+kubectl get pv //persistent volume
+kubectl get pvc //persistent volume claims
+
+
+
+
+
+ConfigMaps
+Setting parameters on k8s
+Review configmap.yml
+
+deploy configmap.yml
+`kubectl apply -f configmap.yml`
+
+```
+k --kubeconfig kubeconfig -n k8s-training get configmaps -o yaml 
+apiVersion: v1
+items:
+- apiVersion: v1
+  data:
+    password: mypassword
+    username: user
+  kind: ConfigMap
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","data":{"password":"mypassword","username":"user"},"kind":"ConfigMap","metadata":{"annotations":{},"name":"configmapname","namespace":"k8s-training"}}
+    creationTimestamp: "2020-02-19T00:35:26Z"
+    name: configmapname
+    namespace: k8s-training
+    resourceVersion: "24020346"
+    selfLink: /api/v1/namespaces/k8s-training/configmaps/configmapname
+    uid: b90dd6a6-52af-11ea-9aa8-025a7f2671ba
+kind: List
+metadata:
+  resourceVersion: ""
+  selfLink: ""
+```
+
+Using configmaps on your application
+
+Review configmap-pod1.yml
+Deploy configmap-pod1.yml
+`kubectl apply -f configmap.yml`
+
+
+Secrets:
+Shhh it's a secret meme
+
+yaml secret secrect1.yml
+Secrets new to be base64 encoded
+
+deploy secret1.yml
+
+view secret
+kubectl get secrets
+
+`k --kubeconfig kubeconfig describe secrets deleteme`
+
+```
+Name:         deleteme
+Namespace:    spinnaker
+Labels:       <none>
+Annotations:  <none>
+
+Type:  Opaque
+
+Data
+====
+password:  10 bytes
+user:      6 bytes
+```
+
+
+`k --kubeconfig kubeconfig get secrets deleteme -o yaml`
+
+```
+apiVersion: v1
+data:
+  password: bXlQYXNzd29yZA==
+  user: bXlVc2Vy
+kind: Secret
+metadata:
+  creationTimestamp: "2020-02-18T18:59:23Z"
+  name: deleteme
+  namespace: spinnaker
+  resourceVersion: "23980951"
+  selfLink: /api/v1/namespaces/spinnaker/secrets/deleteme
+  uid: c6e64350-5280-11ea-9aa8-025a7f2671ba
+type: Opaque
+```
+
+Using secrets on your application
+review secrets-pod1.yml
+
+
+Volumes
+Review volume-pod1.yml
+
+This type of volume is mounted in the k8s node and it's removed once the pod is completed
+
+Deploy volume-pod1.yml
+
+Exec into pod, see file deployed
+`kubectl exec -it volumes-pod bin/sh`
+Make a change into /cache
+Remove `healthy` file
+
+Wait for pod to restart
+Exec into pod, see /cache
+
+
+
+
+### Persistent Volumes
+Review persistentvolume1.yml
+Deploy persistentvolume1.yml
+kubectl apply -f persistentvolume1.yml
+
+Review persistentvolumeClaim1.yml
+Deploy persistentvolumeClaim1.yml
+kubectl apply -f persistentvolumeClaim1.yml
+Debug & fix issues
+
+Review persistentvolume-pod1.yml
+Deploy persistentvolume-pod1.yml
+kubectl apply -f persistentvolume-pod1.yml
+
+
+
+Taints and tolerations
+If pod = bug => 
+taint = bug-spray
+&&
+toleration = tiny bug gas mask
+
+```
+k describe nodes | grep -i taint
+kubectl taint nodes minikube ahi_a_la_vuelta=true:NoSchedule
+k describe nodes | grep -i taint
+```
+
+```
+k run --generator=run-pod/v1 nginx --image nginx
+k get pods
+```
+
+If i did not knew the node has a taint how can I debug my pod?
+
+
+Tolerations
+Review toleration-pod1.yml
+Deploy toleration-pod1.yml
+kubectl apply -f toleration-pod1.yml
+
+k describe pod toletarion-pod | grep -i toleration
+
+Cleanup
+`k taint node minikube ahi_a_la_vuelta=true:NoSchedule-` //notice last "-" character
+
+
+Node Selector
+k label node minikube funciona=si
+
+k describe node minikube
+o
+k get nodes --show-labels
+
+Review nodeSelector-pod1.yml
+Deploy nodeSelector-pod1.yml
+kubectl apply -f nodeSelector-pod1.yml
+
+
+
+Multicontainers
+When applications are thigly coupled having multiple containers makes sense
+review multicontainer1.yml
+try to deploy multicontainer1.yml
+kubectl apply -f multicontainer1.yml
+
+
+Exercises check:
+On namespace: exercise1
+my-first-pod pod exists
+
+On namespace: exercise2
+deployment has 3 pods running
+deployment2 has 1 pods running
+my-first-pod2 is running image nginx
+
+On namespace: exercise3
+pod rest-consumer running, logs showing calls
+pod web-app-6ccbcd9cc6-62cmx running
+
+on namespace: exercise4
+pod nginx running
+pod nginx2 running
