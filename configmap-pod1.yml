@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: configmap-pod
+  namespace: k8s-training
+spec:
+  containers:
+    - name: busybox-pod
+      image: busybox
+      command: [ "/bin/sh", "-c", "env" ]
+      env:
+        - name: MY_ENV_VARIABLE
+          valueFrom:
+            configMapKeyRef:
+              name: configmapname
+              key: password
+  restartPolicy: Never

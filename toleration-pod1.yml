@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: toletarion-pod
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+    imagePullPolicy: IfNotPresent
+  tolerations:
+  - key: "ahi_a_la_vuelta"
+    value: "true"  
+    operator: "Equal"
+    effect: "NoSchedule"

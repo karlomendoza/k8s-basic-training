@@ -1,0 +1,162 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: default-token-vtl5v
+  namespace: elastic-stack
+data:
+  ca.crt: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUN5RENDQWJDZ0F3SUJBZ0lCQURBTkJna3Foa2lHOXcwQkFRc0ZBREFWTVJNd0VRWURWUVFERXdwcmRXSmwKY201bGRHVnpNQjRYRFRJd01ESXhPVEl4TkRJME5sb1hEVE13TURJeE5qSXhOREkwTmxvd0ZURVRNQkVHQTFVRQpBeE1LYTNWaVpYSnVaWFJsY3pDQ0FTSXdEUVlKS29aSWh2Y05BUUVCQlFBRGdnRVBBRENDQVFvQ2dnRUJBTUNDCkRQVzJmWE5sZFBzOE1IR1FIMmQ4Mm1ZTWZvSm4xMzZIYXdhT0NYYnN2SW5zdUdkMmp1dkdxdU9vQWFFRkNHMi8Kb0txMU80SzZDK3hLSlN2a2cwR1FaVVFCT0ZTWmtPTWFzZXFXUldEN2FDMnBDaGhTNkhvUUdiWVdKOVhMQ1VZSQpNQ1ZqRUtMTFk3Sm0zNGRuWjdDVEFnaVg0Zi9pRWJnYmpZWHNabFhuVExxdW5lUkdjTkZCSFRCTy82elV0czdSCjhQTytDUGNPS2Vyamt2Ym1OMGRick55Tkk5VEpndCs5OCtaR2RWd2t2K0hubHVNbkFlR2IrV1ZWVDJ6WWpsSm8KOEVENHlqSWdkamY0WEViT3NQaWlVVjVkVEdEUUdibXZxU1ZmQ1lNdDFLRmVyOGJrdlVoVUFxVytDYVdDZFJUdgp1SFdHWDNBSHZiOEdqTFpucjQ4Q0F3RUFBYU1qTUNFd0RnWURWUjBQQVFIL0JBUURBZ0trTUE4R0ExVWRFd0VCCi93UUZNQU1CQWY4d0RRWUpLb1pJaHZjTkFRRUxCUUFEZ2dFQkFISE9YL0grU240enJDNnB5NHoreUZXcDlBcXQKOGZmaCtzNmRwZUx4MWFFc1h2U0N3TXI0ajdQSk5UUVFRUnh4am9QVXpnZjVOTDJpZk9peEdZdHdZdVdFaUVQUQpkditrMGdUM0pBVU93VWx6MjBDMnZZdXlUTHlrOWhwWDdPek1kVExHWExnU3h5eDUvdGc5MFhiZm5ITVJlS0dXCmpESGlkOWxIVG85SUdNT043M0JvWjVPUko5TkVRNkxDM3Z6eVVvSnBrL3lVa01BRUhXc2lsOXRwenF6MGZyOG4KZWRQUmx1ODFmOEdRMEF5M1dPUi9uR3Ewa3NzYTF5MUN1OUFFK2VNMi9PVWQ5SFg3QjhTMWJORU4zY2dnNjN5Uwp4T0RIZTFxZ2g3cHVscGtPckZsQ01rbGxCY21lRU1GNzE5dnAzNUdyVzRFcVBDWjh0cWJIMEpJUXl4dz0KLS0tLS1FTkQgQ0VSVElGSUNBVEUtLS0tLQo=
+  namespace: ZGVmYXVsdA==
+  token: ZXlKaGJHY2lPaUpTVXpJMU5pSXNJbXRwWkNJNklrdExkRVJsYkVKd1JUaEZWVnBvVVZReWRVbHlMVTUyVDAxMlNtRkZPVVZYY21WNVp6Y3dXbXBPVkZraWZRLmV5SnBjM01pT2lKcmRXSmxjbTVsZEdWekwzTmxjblpwWTJWaFkyTnZkVzUwSWl3aWEzVmlaWEp1WlhSbGN5NXBieTl6WlhKMmFXTmxZV05qYjNWdWRDOXVZVzFsYzNCaFkyVWlPaUprWldaaGRXeDBJaXdpYTNWaVpYSnVaWFJsY3k1cGJ5OXpaWEoyYVdObFlXTmpiM1Z1ZEM5elpXTnlaWFF1Ym1GdFpTSTZJbVJsWm1GMWJIUXRkRzlyWlc0dGRuUnNOWFlpTENKcmRXSmxjbTVsZEdWekxtbHZMM05sY25acFkyVmhZMk52ZFc1MEwzTmxjblpwWTJVdFlXTmpiM1Z1ZEM1dVlXMWxJam9pWkdWbVlYVnNkQ0lzSW10MVltVnlibVYwWlhNdWFXOHZjMlZ5ZG1salpXRmpZMjkxYm5RdmMyVnlkbWxqWlMxaFkyTnZkVzUwTG5WcFpDSTZJbUk1WldWalpUZ3hMVGhqT0dJdE5EUTBPUzA1T0RReExUVTNOVFk1T0RGa00yUTRaQ0lzSW5OMVlpSTZJbk41YzNSbGJUcHpaWEoyYVdObFlXTmpiM1Z1ZERwa1pXWmhkV3gwT21SbFptRjFiSFFpZlEuaHp4eTQ0ME9pWUVXeXVpRGdzdjhQb2FWdmtqMnBRUExZbHpQSF8wR2M0azBVaHdDa2xib2gyNHAtTU4tdmVibG90UmNYRUVrZkdxVFI3OWk2MXpXV3h2eWd0R1RLclZyLVRhY2lacXZZZzFOZ0ZVVEF0UWktNzdNZzlQVVgzaVlsZEhMWjNuQ2ZKTy1HdjZqQUdTUW12Zm4zVnFJcjZpWHRXa0FuVVl6OXhTNTV3YlpOU1d5d1FkemRqNl9lS3BXaFRYOU5qVUpqaHV1RWcyQnZaZ093cTJral8zalJ2ek9fRXRwYUswT0Z2bTRfMHNGWk5SR2xGX1FIeDhib1cwaF9DRldKSkZRY3dOU3ZyaHhpaGJfY3JnNHZpNlVjRlZ3VzVjeFBlTi1nXzh5N19PdWVJUE1ENVZlY1N5cWhXTTVpSDlnbm12OVNtWFhaMFJPajB2Y3FR
+
+
+---
+
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    name: app
+  name: app
+  namespace: elastic-stack
+spec:
+  containers:
+  - image: kodekloud/event-simulator
+    imagePullPolicy: Always
+    name: app
+    resources: {}
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /log
+      name: log-volume
+  - image: kodekloud/filebeat-configured
+    imagePullPolicy: Always
+    name: sidecar
+    resources: {}
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /var/log/event-simulator/
+      name: log-volume
+  dnsPolicy: ClusterFirst
+  enableServiceLinks: true
+  terminationGracePeriodSeconds: 30
+  volumes:
+  - hostPath:
+      path: /var/log/webapp
+      type: DirectoryOrCreate
+    name: log-volume
+  - name: default-token-pxn8v
+    secret:
+      defaultMode: 420
+      secretName: default-token-pxn8v
+
+---
+
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    name: elastic-search
+  name: elastic-search
+  namespace: elastic-stack
+spec:
+  containers:
+  - image: docker.elastic.co/elasticsearch/elasticsearch:6.4.2
+    env:
+    - name: discovery.type
+      value: single-node
+    imagePullPolicy: IfNotPresent
+    name: elastic-search
+    ports:
+    - containerPort: 9200
+      protocol: TCP
+    - containerPort: 9300
+      protocol: TCP
+    resources: {}
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    resources:
+      requests:
+        memory: "1Gi"
+      limits:
+        memory: "2Gi"
+  dnsPolicy: ClusterFirst
+  enableServiceLinks: true
+  restartPolicy: Always
+
+--- 
+
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    name: kibana
+  name: kibana
+  namespace: elastic-stack
+spec:
+  containers:
+  - env:
+    - name: ELASTICSEARCH_URL
+      value: http://elasticsearch:9200
+    image: kibana:6.4.2
+    imagePullPolicy: IfNotPresent
+    name: kibana
+    ports:
+    - containerPort: 5601
+      protocol: TCP
+    resources: {}
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+  dnsPolicy: ClusterFirst
+  enableServiceLinks: true
+  priority: 0
+  restartPolicy: Always
+  terminationGracePeriodSeconds: 30
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: elasticsearch
+  namespace: elastic-stack
+spec:
+  externalTrafficPolicy: Cluster
+  ports:
+  - name: port1
+    nodePort: 30200
+    port: 9200
+    protocol: TCP
+    targetPort: 9200
+  - name: port2
+    nodePort: 30300
+    port: 9300
+    protocol: TCP
+    targetPort: 9300
+  selector:
+    name: elastic-search
+  sessionAffinity: None
+  type: NodePort
+
+---
+
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: kibana
+  namespace: elastic-stack
+spec:
+  externalTrafficPolicy: Cluster
+  ports:
+  - nodePort: 30601
+    port: 5601
+    protocol: TCP
+    targetPort: 5601
+  selector:
+    name: kibana
+  sessionAffinity: None
+  type: NodePort
+status:
+  loadBalancer: {}
