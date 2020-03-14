@@ -1,0 +1,198 @@
+1) Cómo puedes ver los logs del siguiente pod en K8s?
+
+```
+NAME                                READY   STATUS              RESTARTS   AGE
+spin-clouddriver-5b7f54479b-676qs   1/1     Running             0          4h48m
+```
+
+Opciones
+kubectl show logs pod spin-clouddriver-5b7f54479b-676qs
+kubectl log spin-clouddriver-5b7f54479b-676qs
+kubectl logs spin-clouddriver-5b7f54479b-676qs
+kubectl get pod spin-clouddriver-5b7f54479b-676qs -logs
+Tanto la opción 2 y 3
+
+
+2) Si aplicamos el siguiente yaml en K8s `k apply -f deployment1.yml`
+
+``` deployment1.yml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-first-deployment
+  namespace: training
+  labels:
+    app: nginx-deployment
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: nginx-label
+  template:
+    metadata:
+      labels:
+        app: nginx-label
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.7.8
+        ports:
+        - containerPort: 80
+```
+Cuál es el output que tendremos de este comando?
+
+Opciones
+error: error parsing deployment1.yml: error converting YAML to JSON: yaml: line 5: mapping values are not allowed in this context
+Error from server (NotFound): error when creating "deployment1.yml": namespaces "training" not found
+4 Running pods with name my-first-deployment-XXXXX-XXXXXX in namespace training
+4 Running pods with name my-first-deployment-XXXXX-XXXXXX in namespace default
+Ninguna de las anteriores
+
+
+3) Si aplicamos el siguiente yaml en K8s `k apply -f deployment2.yml`
+
+``` deployment2.yml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-app
+    namespace: training
+  labels:
+    app: web-app
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: web-app-backend
+  template:
+    metadata:
+      labels:
+        app: web-app-backend
+    spec:
+      containers:
+      - name: web-app
+        image: karlomendozaarmory/k8s-training:4
+        ports:
+        - containerPort: 9090
+        command:
+        - /bin/sh
+        - -c
+        - touch /tmp/healthy; sleep 3000;
+        livenessProbe:
+          exec:
+            command:
+            - cat
+            - /tmp/healthy
+          initialDelaySeconds: 10
+          periodSeconds: 5
+        readinessProbe:
+          exec:
+            command:
+            - cat
+            - /tmp/healthy
+          initialDelaySeconds: 10
+          periodSeconds: 5
+```
+
+Opciones:
+Error line 5: mapping values are not allowed in this context
+4 Running pods with name web-app-XXXXX-XXXXXX in namespace training
+4 Running pods with name web-app-XXXXX-XXXXXX in namespace default
+Ninguna de las anteriores
+
+
+
+4) From the following yaml file, what does the "selector" part means?
+
+``` service.yml
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-app-service
+  namespace: default
+  labels:
+    service: web-app-service
+spec:
+  ports:
+  - port: 9090
+    protocol: TCP
+  selector:
+    app: web-app-backend
+```
+
+Opciones:
+It uses this field to tell K8s that for any Node to use this service it needs to have this label.
+It's a way for labeling the service.
+If two labels have the same name this way you can differentiate one from the other.
+It's so the service knows what pod/deployment is paired to.
+
+
+5) What does the following command do (assuming both my-pod and paperas exists)
+kubectl exec -it my-pod -n paperas bin/sh
+
+ssh into the pod and executes a command line
+Fails misserable like your hopes and dreams
+Returns the yaml file specs of the pod `my-pod` on the default namespace
+Returns the yaml file specs of the pod `my-pod` on the `paperas` namespace
+Ninguna de las anteriores
+
+
+6) Con que comando de kubectl puedes borrar el siguiente pod:
+
+NAME                                READY   STATUS              RESTARTS   AGE
+spin-clouddriver-5b7f54479b-676qs   1/1     Running             0          4h48m
+
+opciones)
+
+kubectl delete spin-clouddriver-5b7f54479b-676qs --type=pod
+kubectl delete pod spin-clouddriver-5b7f54479b-676qs
+kubectl delete svc spin-clouddriver-5b7f54479b-676qs
+kubectl del spin-clouddriver-5b7f54479b-676qs --type=pod
+
+
+7) De que forma puedes ver la imagen (ex. de docker) que esta usando un deployment en k8s?
+
+Opciones)
+kubectl get pods --show-container-image
+kubectl describe pod <name> | grep -i image
+kubectl get pod <name> -o yaml
+kubectl describe deployment 
+
+
+8) En el siguiente extracto de un manifest, que implica la siguiente configuración para tu pod:
+
+```yaml
+
+        livenessProbe:
+          exec:
+            command:
+            - cat
+            - /tmp/healthy
+          initialDelaySeconds: 10
+          periodSeconds: 10
+        readinessProbe:
+          exec:
+            command:
+            - cat
+            - /tmp/healthy
+          initialDelaySeconds: 10
+          periodSeconds: 5
+```
+
+Opciones)
+Configuración extra que agrega k8s automaticamente para sus cosas
+Prueba que nuestro pod este ready y healthy cuando el comando "cat /tmp/healthy" funcione
+Levanta 2 servicios extra, uno corriendo cada 10s y otro cada 5s para pruebas de carga
+K8s es un lugar obscuro y lleno de terrores, prefiero no saber
+
+9) Match the service type to their definition
+
+a) NodePort
+b) IpCluster
+c) LoadBalancer
+d) AutoBot
+
+i) Not a valid type of service
+ii) Exposes the Service externally using a cloud provider’s load balancer.
+iii) Exposes the Service on each Node’s IP at a static port
+iiii) Exposes the Service on a cluster-internal IP.
