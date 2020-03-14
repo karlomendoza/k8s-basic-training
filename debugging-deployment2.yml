@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: debugging2
+  namespace: training
+  labels:
+    app: debugging2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: debugging2
+  template:
+    metadata:
+      labels:
+        app: debugging2
+    spec:
+      containers:
+      - name: web-app
+        image: karlomendozaarmory/debugging:2
+        ports:
+        - containerPort: 9090
