@@ -5,7 +5,7 @@ metadata:
 spec:
   storageClassName: slow  ## must match with PV
   accessModes:
-    - ReadWriteOnce  ## must match with PV
+    - ReadWriteMany  ## must match with PV
   resources:
     requests:
       storage: 10Gi  ## must be less or equal with PV

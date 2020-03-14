@@ -14,14 +14,12 @@ spec:
       maxUnavailable: 25%
   selector:
     matchLabels:
-      app: nginx-label
+      app: my-first-pod-label
   template:
     metadata:
       labels:
-        app: nginx-label
+        app: my-first-pod-label
     spec:
       containers:
       - name: nginx
-        image: nginx:1.7.9
-        ports:
-        - containerPort: 80
+        image: nginx:3.7.9

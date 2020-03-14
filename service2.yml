@@ -6,7 +6,7 @@ metadata:
   labels:
     service: web-app-service
 spec:
-  type: NodePort #IpCluster, LoadBalancer if on cloud
+  type: NodePort #IpCluster, LoadBalancer 
   ports:
   - port: 9090
     targetPort: 9090

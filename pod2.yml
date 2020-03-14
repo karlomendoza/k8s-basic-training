@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: my-first-pod
-  namespace: training #You can add namespace to tell k8s on where to deploy it
+  name: my-second-pod
+  namespace: training
 spec:
  containers:
-   - name: my-first-container
+   - name: my-second-container
      image: nginx
